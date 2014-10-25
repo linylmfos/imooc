@@ -1,0 +1,52 @@
+<!DOCTYPE html >
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+</head>
+
+<body>
+<!-- 
+注意：水平滑动主要需要改变水平便宜的left值，所以要给图片绝对定位，绝对定位以后脱离文档留所以可能遮住按钮，这时可以将按钮设置足够大的上边距margin-top;另外设置图片left时候不能漏了单位“px"
+-->
+<div>
+  <img src="image/23.jpg" style="position:absolute;left:30px;top:0; width:300px;height:300px;" id="myImage"/>
+  <!--点击滑动按钮 -->
+  <input name="button" type="button" id="btn" style="margin-top:350px"  value="滑动"  />
+</div>
+<script>
+//onload 事件 是为了使脚本能够获得页面中的已加载的元素
+  
+      window.onload = function(){
+			var img = document.getElementById("myImage");
+			var btn = document.getElementById("btn");
+		
+			//绑定点击事件
+			btn.onclick = function(){
+				imgSlide();	//点击按钮时执行滑动函数
+			}
+		
+			var maxLeft = 700;//向右滑动的极限值
+			//实现滑动函数
+			function imgSlide(){
+				var endLeft =  parseInt(img.style.left.split("p")[0]) + 300;    //每次点击后向右滑动300px
+				var slideTimer = setInterval(function(){ 
+				 var imgLeft = parseInt(img.style.left.split("p")[0]); //现在距离左边的距离
+					if(imgLeft < endLeft){
+						if(imgLeft < maxLeft){
+							//将图片的左偏移（left值）增加20px，注意单位
+							img.style.left = parseInt(img.style.left.split("p")[0]) + 20 +"px"; 
+						}else{
+							alert("亲，到家了。。");
+							//终止定时器函数
+							clearInterval(slideTimer);
+						}
+					}else{
+							clearInterval(slideTimer);	
+					}
+				},10);	
+			}
+	}
+</script>
+</body>
+</html>
