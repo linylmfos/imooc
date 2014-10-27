@@ -50,6 +50,7 @@
 	 {
 	   border:1px solid #ddd;
 	   border-right:0;
+	   height:60px;
 	   box-shadow:0 0 8px #ddd;
 	   -moz-box-shadow:0 0 8px #ddd;
 	   -webkit-box-shadow:0 0 8px #ddd;
@@ -60,13 +61,22 @@
 	 }
 	 .topmenu .lihover span  /*白色小方框*/
 	 {
-		  background:white;
-		  display:inline-block;
-		  z-index:20;
-		  width:20px;
-		  height:30px;
-		  float:right;
-		  position:relative;
+	  background:white;
+	  display:inline-block;
+	  z-index:20;
+	  width:20px;
+	  height:60px;
+	  float:right;
+	  position:relative;
+	 }
+	 .topmenu .lihover b 
+	 {
+	   display:block;
+	   height:30px;
+	   line-height:30px;
+	   font-weight:normal;
+	   font-size:10pt;
+		   
 	 }
 	 .submenu
 	 {
@@ -75,8 +85,8 @@
 	   left:220px;
 	   position:absolute;
 	   top:40px;
-	   border: 1px solid #ddd
-	   z-index:4px;
+	   border: 1px solid #ddd;
+	   z-index:4;
 	   background:white;
 	   box-shadow:0 0 8px #ddd;
 	   -moz-box-shadow:0 0 8px #ddd;
@@ -165,6 +175,16 @@
 	    color:#737373;
 		font-weight:normal;
 	  }
+	  .topmenu  li b 
+	  {
+	   display:none;
+	  }
+	  .rightPic
+	  {
+	   position:relative;
+	   right:-30px;
+	   height:-30px;
+	  }
  </style>
  
 </head>
@@ -174,8 +194,16 @@
    window.onload = function(){
       var lis = document.getElementsByTagName("li");
 	  for(i = 0; i < lis.length; i++){
+	     lis[i].i = i;
 	    lis[i].onmouseover = function(){
 		     this.className = "lihover";
+			 
+			 var h0 = (this.i-1) * 30 + 42;
+			 var y = this.getElementsByTagName("div")[0].offsetHeight;
+			 var h = this.getElementsByTagName("div")[0].style.top + y;
+			 if( h < h0){
+			   this.getElementsByTagName("div")[0].style.top = h0 + "px";
+			 }
 		}
 	    lis[i].onmouseout = function(){
 		     this.className = "";
@@ -190,16 +218,18 @@
 	    全部商品分类
 	 </div>
       <li><a href="#">图书、音像、数字商品</a><span></span>
+	  <b><a href="#">文学</a> <a href="#">经管</a>
+            <a href="#">畅读VIP</a></b>
 	       <div class="submenu">
 		      <div class="leftdiv">
-			     <dl>
+			        <dl>
                         <dt><a href="#">电子书</a></dt>
                         <dd>
                             <a href="#">免费</a> <a href="#">小说</a> <a href="#">励志与成功</a> <a href="#">婚恋/两性</a>
                             <a href="#">文学</a> <a href="#">经管</a> <a href="#">畅读VIP</a>
                         </dd>
                     </dl>
-                    <dl>
+                     <dl>
                         <dt><a href="#">数字音乐</a></dt>
                         <dd>
                             <a href="#">通俗流行</a> <a href="#">古典音乐</a> <a href="#">摇滚说唱</a> <a href="#">爵士蓝调</a>
@@ -266,6 +296,7 @@
                             <a href="#">杂志/期刊</a>
                         </dd>
                     </dl>
+					 
 			     
 			  
 			  </div>
@@ -283,11 +314,97 @@
 				 <dl>
 				    <dt>推荐品牌</dt>
 					<dd><a href="#" >dfdddddddfd</a></dd>
-					<dd><a href="#" >dfdddddddfd</a></dd><dd><a href="#" >dfdddddddfd</a></dd><dd><a href="#" >dfdddddddfd</a></dd><dd><a href="#" >dfdddddddfd</a></dd><dd><a href="#" >dfdddddddfd</a></dd><dd><a href="#" >dfdddddddfd</a></dd><dd><a href="#" >dfdddddddfd</a></dd>
+					<dd><a href="#" >dfdddddddfd</a></dd><dd><a href="#" >dfdddddddfd</a></dd><dd><a href="#" >dfdddddddfd</a></dd><dd><a href="#" >dfdddddddfd</a></dd> 
 					
 				 </dl>
+				 <img src="image/wii.png" class="rightPic"/>
 				  
 			   </div>
+		   </div>
+	    
+	  </li>
+	   <li><a href="#">图书、音像、数字商品</a><span></span>
+	       <div class="submenu">
+		      <div class="leftdiv">
+			        <dl>
+                        <dt><a href="#">电子书</a></dt>
+                        <dd>
+                            <a href="#">免费</a> <a href="#">小说</a> <a href="#">励志与成功</a> <a href="#">婚恋/两性</a>
+                            <a href="#">文学</a> <a href="#">经管</a> <a href="#">畅读VIP</a>
+                        </dd>
+                    </dl>
+                   <!-- <dl>
+                        <dt><a href="#">数字音乐</a></dt>
+                        <dd>
+                            <a href="#">通俗流行</a> <a href="#">古典音乐</a> <a href="#">摇滚说唱</a> <a href="#">爵士蓝调</a>
+                            <a href="#">乡村民谣</a> <a href="#">有声读物</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">音像</a></dt>
+                        <dd>
+                            <a href="#">音乐</a> <a href="#">影视</a> <a href="#">教育音像</a> <a href="#">游戏</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">文艺</a></dt>
+                        <dd>
+                            <a href="#">小说</a> <a href="#">文学</a> <a href="#">青春文学</a> <a href="#">传记</a> <a href="#">艺术</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">人文社科</a></dt>
+                        <dd>
+                            <a href="#">历史</a> <a href="#">心理学</a> <a href="#">政治/军事</a> <a href="#">国学/古籍</a>
+                            <a href="#">哲学/宗教</a> <a href="#">社会科学</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">经管励志</a></dt>
+                        <dd>
+                            <a href="#">经济</a> <a href="#">金融与投资</a> <a href="#">管理</a> <a href="#">励志与成功</a>
+                        </dd>
+                    </dl>
+                    <dl class="fore7">
+                        <dt><a href="#">生活</a></dt>
+                        <dd>
+                            <a href="#">家教与育儿</a> <a href="#">旅游/地图</a> <a href="#">烹饪/美食</a> <a href="#">时尚/美妆</a>
+                            <a href="#">家居</a> <a href="#">婚恋与两性</a> <a href="#">娱乐/休闲</a> <a href="#">健身与保健</a>
+                            <a href="#">动漫/幽默</a> <a href="#">体育/运动</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">科技</a></dt>
+                        <dd>
+                            <a href="#">科普</a> <a href="#">IT</a> <a href="#">建筑</a> <a href="#">医学</a> <a href="#">
+                                工业技术</a> <a href="#">电子/通信</a> <a href="#">农林</a> <a href="#">科学与自然</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">少儿</a></dt>
+                        <dd>
+                            <a href="#">少儿</a> <a href="#">0-2岁</a> <a href="#">3-6岁</a> <a href="#">7-10岁</a>
+                            <a href="#">11-14岁</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">教育</a></dt>
+                        <dd>
+                            <a href="#">教材</a> <a href="#">中小学教辅</a> <a href="#">考试</a> <a href="#">外语学习</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt><a href="#">其它</a></dt>
+                        <dd>
+                            <a href="#">英文原版书</a> <a href="#">港台图书</a> <a href="#">工具书</a> <a href="#">套装书</a>
+                            <a href="#">杂志/期刊</a>
+                        </dd>
+                    </dl>
+					-->
+			     
+			  
+			  </div>
+			   
 		   </div>
 	    
 	  </li>
